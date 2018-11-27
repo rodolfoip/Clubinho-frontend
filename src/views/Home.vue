@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul v-if="allEvents">
+      <li :key="key" v-for="(event,key) in allEvents">
+        <div v-if="event">
+          {{event.local}} | {{event.author}}
+        </div>
+        <br>
+        <br>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { GET_ALL_EVENTS } from '../graphql'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  }
+  data () {
+    return {
+      allEvents: []
+    }
+  },
+  apollo: {
+    allEvents: {
+      query: GET_ALL_EVENTS
+    }
+  },
+  methods: {}
 }
 </script>
