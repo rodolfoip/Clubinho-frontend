@@ -4,8 +4,6 @@
       <router-link to="/">Home</router-link>
       |
       <router-link to="/registerEvent">Cadastrar</router-link>
-      |
-      <router-link to="/updateEvent/5be1939cbb814f61728cd257">Editar</router-link>
     </div>
     <router-view/>
   </div>
@@ -22,9 +20,11 @@
 
   #nav {
     padding: 30px;
+
     a {
       font-weight: bold;
       color: #2c3e50;
+
       &.router-link-exact-active {
         color: #42b983;
       }

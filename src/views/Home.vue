@@ -4,6 +4,7 @@
       <li :key="key" v-for="(event,key) in allEvents">
         <div v-if="event">
           {{event.local}} | {{event.author}}
+          <router-link :to="{name:'updateEvent',params:{eventId:event._id}}">Editar</router-link>
         </div>
         <br>
         <br>
