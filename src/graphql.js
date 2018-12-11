@@ -13,9 +13,9 @@ export const REGISTER_EVENT_MUTATION = gql`
   }
 `
 export const UPDATE_EVENT_MUTATION = gql`
-  mutation updateEvent($id: ID!, $local: String!, $author: String!){
+  mutation updateEvent($_id: ID!, $local: String!, $author: String!){
     updateEvent(
-    _id: $id,
+    _id: $_id,
     local: $local,
     author: $author
     ){

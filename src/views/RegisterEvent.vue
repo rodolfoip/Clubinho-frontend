@@ -35,16 +35,12 @@ export default {
             local: this.event.local,
             author: this.event.author
           },
-          update: (store, data) => {
-            console.log(data, store)
+          update: (store, { data: { registerEvent } }) => {
+            const data = store.readQuery({ query: GET_ALL_EVENTS })
 
-            // const data = store.readQuery({ query: GET_ALL_EVENTS })
+            data.allEvents.push(registerEvent)
 
-            // console.log(addEvent, store, data)
-
-            // data.allEvents.push(addEvent)
-
-            // store.writeQuery({ query: GET_ALL_EVENTS, data })
+            store.writeQuery({ query: GET_ALL_EVENTS, data })
           }
         })
         .then((data) => {

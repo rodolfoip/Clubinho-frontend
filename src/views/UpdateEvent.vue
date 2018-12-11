@@ -12,6 +12,7 @@
       </div>
       <button type="submit">Atualizar</button>
     </form>
+    {{event}}
   </div>
 </template>
 <script>
@@ -40,7 +41,7 @@ export default {
         .mutate({
           mutation: UPDATE_EVENT_MUTATION,
           variables: {
-            id: this.event._id,
+            _id: this.event._id,
             local: this.event.local,
             author: this.event.author
           }
