@@ -26,6 +26,14 @@ export const UPDATE_EVENT_MUTATION = gql`
   }
 `
 
+export const DELETE_EVENT_BY_ID = gql`
+  mutation deleteEventById($_id: ID!){
+    deleteEventById(
+    _id: $_id
+    )
+  }
+`
+
 export const GET_ALL_EVENTS = gql`  
   query getAllEvents{
     allEvents{

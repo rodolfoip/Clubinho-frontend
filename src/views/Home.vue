@@ -5,6 +5,7 @@
         <div v-if="event">
           {{event.local}} | {{event.author}}
           <router-link :to="{name:'updateEvent',params:{eventId:event._id}}">Editar</router-link>
+          <button @click="deleteEvent(event._id)">Deletar</button>
         </div>
         <br>
         <br>
@@ -15,7 +16,7 @@
 
 <script>
 // @ is an alias to /src
-import { GET_ALL_EVENTS } from '../graphql'
+import { GET_ALL_EVENTS, DELETE_EVENT_BY_ID } from '../graphql'
 
 export default {
   name: 'home',
@@ -29,6 +30,29 @@ export default {
       query: GET_ALL_EVENTS
     }
   },
-  methods: {}
+  methods: {
+    deleteEvent (_id) {
+      this.$apollo
+        .mutate({
+          mutation: DELETE_EVENT_BY_ID,
+          variables: {
+            _id: _id
+          },
+          update: (store, { data: { deleteEventById } }) => {
+            const data = store.readQuery({ query: GET_ALL_EVENTS })
+
+            data.allEvents = data.allEvents.filter((e) => e._id !== _id)
+
+            store.writeQuery({ query: GET_ALL_EVENTS, data })
+          }
+        })
+        .then((data) => {
+          console.log(data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }
 }
 </script>

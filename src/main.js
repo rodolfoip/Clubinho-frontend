@@ -10,7 +10,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
 
 const httpLink = new HttpLink({
-  uri: 'https://localhost:4000/graphql'
+  uri: 'https://dev.rodolfo:4000/graphql'
 })
 
 const link = httpLink
