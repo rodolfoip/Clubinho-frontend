@@ -3,7 +3,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
-      <router-link to="/registerEvent">Cadastrar</router-link>
+      <router-link to="/registerEvent">Cadastrar Evento</router-link>
+      |
+      <router-link to="/registerUser">Cadastrar Usuário</router-link>
     </div>
     <router-view/>
   </div>

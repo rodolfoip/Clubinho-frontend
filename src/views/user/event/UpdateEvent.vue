@@ -7,8 +7,10 @@
         <input type="text" id="local" v-model="event.local">
       </div>
       <div>
-        <label for="author">Autor</label>
-        <input type="text" id="author" v-model="event.author">
+        <label for="user">Usuário</label>
+        <select id="user" v-if="allUsers" v-model="event.userId">
+          <option :seleted="user._id === event.userId" v-for="(user,key) in allUsers" :key="key" :value="user._id">{{user.name}}</option>
+        </select>
       </div>
       <button type="submit">Atualizar</button>
     </form>
@@ -16,12 +18,13 @@
   </div>
 </template>
 <script>
-import { GET_EVENT_BY_ID, UPDATE_EVENT_MUTATION } from '../graphql'
+import { GET_EVENT_BY_ID, GET_ALL_USERS, UPDATE_EVENT_MUTATION } from '../../../graphql'
 
 export default {
   data () {
     return {
-      event: {}
+      event: {},
+      allUsers: []
     }
   },
   apollo: {
@@ -33,6 +36,9 @@ export default {
       update (data) {
         return data.eventById
       }
+    },
+    allUsers: {
+      query: GET_ALL_USERS
     }
   },
   methods: {
@@ -43,7 +49,7 @@ export default {
           variables: {
             _id: this.event._id,
             local: this.event.local,
-            author: this.event.author
+            userId: this.event.userId
           }
         })
         .then((data) => {
