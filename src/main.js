@@ -8,6 +8,7 @@ import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
+import Vuetify from 'vuetify'
 
 const httpLink = new HttpLink({
   uri: 'https://dev.rodolfo:4000/graphql'
@@ -28,6 +29,7 @@ const apolloProvider = new VueApollo({
 Vue.config.productionTip = false
 
 Vue.use(VueApollo)
+Vue.use(Vuetify)
 
 new Vue({
   router,
