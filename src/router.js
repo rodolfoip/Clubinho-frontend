@@ -16,12 +16,12 @@ export default new Router({
     {
       path: '/registerEvent',
       name: 'registerEvent',
-      component: () => import('./views/user/event/RegisterEvent.vue')
+      component: () => import('./views/event/RegisterEvent.vue')
     },
     {
       path: '/updateEvent/:eventId',
       name: 'updateEvent',
-      component: () => import('./views/user/event/UpdateEvent.vue')
+      component: () => import('./views/event/UpdateEvent.vue')
     },
     {
       path: '/registerUser',

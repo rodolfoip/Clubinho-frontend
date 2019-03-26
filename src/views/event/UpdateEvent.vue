@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import { GET_EVENT_BY_ID, GET_ALL_USERS, UPDATE_EVENT_MUTATION } from '../../../graphql'
+import { GET_EVENT_BY_ID, GET_ALL_USERS, UPDATE_EVENT_MUTATION } from '../../graphql'
 
 export default {
   data () {
